@@ -16,10 +16,7 @@ class ModifyCommandeTable extends Migration
         Schema::table('commande', function (Blueprint $table) {
             $table->unsignedBigInteger('id_users')->unsigned();
             $table->foreign('id_users')->references('id')->on('users');
-            $table->unsignedBigInteger('id_produit')->unsigned();
-            $table->foreign('id_produit')->references('id')->on('produit');
-
-            $table->string('quantity',255)->nullable();
+            
         });
     }
 

@@ -62,8 +62,8 @@ export default {
         },
 
         commandePanier(){
-            let promise = basketService.sendOrder()
-            promise.then(response => {
+            
+            basketService.sendOrder().then(response => {
                 console.log("Données enregistrée")
                     console.log(response);
             })

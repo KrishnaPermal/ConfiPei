@@ -2407,8 +2407,7 @@ __webpack_require__.r(__webpack_exports__);
       this.produitsDisplay = this.produits;
     },
     commandePanier: function commandePanier() {
-      var toto = _services_basket_service__WEBPACK_IMPORTED_MODULE_1__["basketService"].sendOrder();
-      toto.then(function (response) {
+      _services_basket_service__WEBPACK_IMPORTED_MODULE_1__["basketService"].sendOrder().then(function (response) {
         console.log("Données enregistrée");
         console.log(response);
       });
@@ -27974,7 +27973,11 @@ var render = function() {
                         "v-btn",
                         {
                           attrs: { width: "100%" },
-                          on: { click: _vm.commandePanier }
+                          on: {
+                            click: function($event) {
+                              return _vm.commandePanier()
+                            }
+                          }
                         },
                         [_vm._v("Commander")]
                       )
@@ -86407,7 +86410,7 @@ function sendOrder() {
   }
 
   console.log(produitQuantity);
-  return _api_services__WEBPACK_IMPORTED_MODULE_1__["apiServices"].post('/api/basket', {
+  return _api_services__WEBPACK_IMPORTED_MODULE_1__["apiServices"].post('/api/commande', {
     order: produitQuantity
   });
 }

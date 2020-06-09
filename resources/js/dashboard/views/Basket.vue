@@ -32,7 +32,7 @@
               <v-row>
          
           <v-col cols="3">
-            <v-btn width="100%" @click="commandePanier">Commander</v-btn>
+            <v-btn width="100%" @click="commandePanier()">Commander</v-btn>
           </v-col>
         </v-row>
           </v-container>

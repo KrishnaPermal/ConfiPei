@@ -94,7 +94,7 @@ function sendOrder(){
     } 
     console.log(produitQuantity); 
 
-    return apiServices.post('/api/basket',{
+    return apiServices.post('/api/commande',{
         order: produitQuantity,
     })
 
