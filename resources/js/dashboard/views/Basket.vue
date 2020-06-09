@@ -12,9 +12,9 @@
           <v-row dense>
             <v-col class="md-4">
               <v-card-actions>
-                <v-card-title>{{produit.name}}</v-card-title>
-                <v-card-subtitle>Prix: {{produit.price}} €</v-card-subtitle>
-                <v-text-field
+                <v-card-title>Nom :{{produit.name}}</v-card-title>
+                <v-card-subtitle class="pb-0">Prix: {{produit.price}} €</v-card-subtitle>
+                <v-text-field 
                   type="number"
                   min="0"
                   v-model="produit.quantity" @input="updateQuantity(produit)">
@@ -27,6 +27,15 @@
           </v-container>
           </v-card>
         </v-row>
+        <v-container>
+            
+              <v-row>
+         
+          <v-col cols="3">
+            <v-btn width="100%" @click="commandePanier">Commander</v-btn>
+          </v-col>
+        </v-row>
+          </v-container>
       </div>
     </div>     
   </v-container>

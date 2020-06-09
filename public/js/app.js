@@ -2405,6 +2405,13 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
       this.produitsDisplay = this.produits;
+    },
+    commandePanier: function commandePanier() {
+      var toto = _services_basket_service__WEBPACK_IMPORTED_MODULE_1__["basketService"].sendOrder();
+      toto.then(function (response) {
+        console.log("Données enregistrée");
+        console.log(response);
+      });
     }
   },
   created: function created() {
@@ -2419,8 +2426,7 @@ __webpack_require__.r(__webpack_exports__);
 
       _this2.initTable(_services_basket_service__WEBPACK_IMPORTED_MODULE_1__["basketService"].getBasket()); // quand ont actualise
 
-    });
-    console.log(this.itemPanier);
+    }); //console.log(this.itemPanier)
   }
 });
 
@@ -27903,14 +27909,18 @@ var render = function() {
                                 "v-card-actions",
                                 [
                                   _c("v-card-title", [
-                                    _vm._v(_vm._s(produit.name))
+                                    _vm._v("Nom :" + _vm._s(produit.name))
                                   ]),
                                   _vm._v(" "),
-                                  _c("v-card-subtitle", [
-                                    _vm._v(
-                                      "Prix: " + _vm._s(produit.price) + " €"
-                                    )
-                                  ]),
+                                  _c(
+                                    "v-card-subtitle",
+                                    { staticClass: "pb-0" },
+                                    [
+                                      _vm._v(
+                                        "Prix: " + _vm._s(produit.price) + " €"
+                                      )
+                                    ]
+                                  ),
                                   _vm._v(" "),
                                   _c("v-text-field", {
                                     attrs: { type: "number", min: "0" },
@@ -27947,6 +27957,34 @@ var render = function() {
                 1
               )
             }),
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            [
+              _c(
+                "v-row",
+                [
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "3" } },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { width: "100%" },
+                          on: { click: _vm.commandePanier }
+                        },
+                        [_vm._v("Commander")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
             1
           )
         ],
@@ -28333,7 +28371,7 @@ var render = function() {
           _c(
             "v-list-item",
             [
-              _c("v-btn", { attrs: { to: "/panier" } }, [
+              _c("v-btn", { attrs: { to: "/basket" } }, [
                 _vm._v("Voir le panier")
               ])
             ],
@@ -86275,12 +86313,15 @@ function isProducteur() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "basketService", function() { return basketService; });
 /* harmony import */ var _helpers_event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_helpers/event.bus */ "./resources/js/dashboard/_helpers/event.bus.js");
+/* harmony import */ var _api_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api.services */ "./resources/js/dashboard/_services/api.services.js");
+
 
 var basketService = {
   addPanier: addPanier,
   getBasket: getBasket,
   quantityBasketSize: quantityBasketSize,
-  updateBasket: updateBasket
+  updateBasket: updateBasket,
+  sendOrder: sendOrder
 };
 
 function addPanier(produit, quantity) {
@@ -86352,6 +86393,23 @@ function updateBasket(produit) {
   }
 
   storeBasket(basket);
+}
+
+function sendOrder() {
+  var basket = getBasket();
+  var produitQuantity = [];
+
+  for (var item in basket) {
+    var objet = {};
+    objet['id'] = basket[item].id;
+    objet['produitQuantity'] = basket[item].quantity;
+    produitQuantity.push(objet);
+  }
+
+  console.log(produitQuantity);
+  return _api_services__WEBPACK_IMPORTED_MODULE_1__["apiServices"].post('/api/basket', {
+    order: produitQuantity
+  });
 }
 
 /***/ }),
@@ -86728,12 +86786,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       authorize: [_helpers_role__WEBPACK_IMPORTED_MODULE_8__["Role"].Producteur]
     }
   },
-  /* {
+  /*  {
       path: '/dashboardClient',
       name: 'client',
       component: dashboardClient,
       meta: { authorize: [Role.Producteur] }
-  }, */
+  },  */
   {
     path: '/basket',
     name: 'basket',

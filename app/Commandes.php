@@ -13,8 +13,13 @@ class Commandes extends Model
     {
         return $this->belongsToMany('App\Produits', 'commande_has_produit', 'id_commande','id_produit');
     }
+    /* function users()
+    {
+        return $this->belongsTo('App\User', 'users_has_commande', 'id_users', 'id_commande');
+    }
+ */
     function users()
     {
-        return $this->belongsToMany('App\User', 'users_has_commande', 'id_users', 'id_commande');
+        return $this->belongsTo('App\User', 'id_users');
     }
 }

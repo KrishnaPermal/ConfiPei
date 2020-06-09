@@ -16,13 +16,13 @@ class CommandeSeeder extends Seeder
      */
     public function run()
     {
-        factory(Commandes::class, 5)->create()
+       /*  factory(Commandes::class, 5)->create()
         ->each(function ($u) {
             $u->produit()->saveMany(factory(Produits::class, 1)->make()
         );
-        //->each(function ($p) {
-           // $p->user()->saveMany(factory(User::class, 1)->make());
-            //});
-        });
+        ->each(function ($p) {
+           $p->user()->saveMany(factory(User::class, 1)->make());
+            });
+        }); */
     }
 }

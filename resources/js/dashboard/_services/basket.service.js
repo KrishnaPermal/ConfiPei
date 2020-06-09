@@ -1,9 +1,12 @@
 import {EventBus} from "../_helpers/event.bus";
+import {apiServices} from "./api.services";
+
 export const basketService = {
     addPanier,
     getBasket,
     quantityBasketSize,
     updateBasket,
+    sendOrder,
 }
 
 
@@ -78,4 +81,21 @@ function updateBasket(produit){
         throw 'error'
     }
     storeBasket(basket);
+}
+
+function sendOrder(){
+    let basket = getBasket();
+    let produitQuantity = [];
+    for( let item in basket){
+        let objet = {};
+        objet ['id'] = basket[item].id
+        objet ['produitQuantity'] = basket[item].quantity
+        produitQuantity.push(objet)
+    } 
+    console.log(produitQuantity); 
+
+    return apiServices.post('/api/basket',{
+        order: produitQuantity,
+    })
+
 }

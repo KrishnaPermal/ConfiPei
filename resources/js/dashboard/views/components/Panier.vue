@@ -26,7 +26,7 @@
             </v-list-item-title>
         </v-list-item>
         <v-list-item>
-            <v-btn to="/panier">Voir le panier</v-btn>
+            <v-btn to="/basket">Voir le panier</v-btn>
         </v-list-item>
     </v-list>
 </v-menu>

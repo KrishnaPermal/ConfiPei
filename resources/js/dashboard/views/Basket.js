@@ -60,6 +60,15 @@ export default {
                 })
             this.produitsDisplay = this.produits;
         },
+
+        commandePanier(){
+            let promise = basketService.sendOrder()
+            promise.then(response => {
+                console.log("Données enregistrée")
+                    console.log(response);
+            })
+        
+        }
         
     },
     
@@ -74,6 +83,6 @@ export default {
             this.initTable(basketService.getBasket()) // quand ont actualise
             
         });
-        console.log(this.itemPanier)
+        //console.log(this.itemPanier)
     }
 }

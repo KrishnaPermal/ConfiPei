@@ -36,13 +36,16 @@ Route::middleware(['auth:api','roles:Producteur'])->prefix('producteurs')->group
     Route::post('produits', 'ProduitController@createOrUpdate'); 
 }); 
 
-/****route currentUser****/
+/*****************************************************************************/
+Route::middleware(['auth:api', 'roles:Producteur|Client'])->group(function(){
+    Route::post('/commande', 'CommandesController@pushPanier');
+});
+/*****************************************************************************/
 
-Route::post('/currentUser', 'UsersController@getCurrentUserDB');
-
-/****route currentUser****/
 
 
+
+//Route::post('basket', 'CommandesController@pushPanier');
 
 Route::get('fruits', 'FruitsController@index');
 
@@ -50,6 +53,25 @@ Route::get('produits', 'ProduitController@index');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Route::get('Fruits', 'FruitsController@index');
 
 //Route::get('users', 'UsersController@index');
+
+/****route currentUser****/
+
+//Route::post('/currentUser', 'UsersController@getCurrentUserDB');
+
+/****route currentUser****/

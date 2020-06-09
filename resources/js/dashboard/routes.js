@@ -45,12 +45,12 @@ const router = new VueRouter({
             component: dashboardProducteur,
             meta: { authorize: [Role.Producteur] }
         },
-        /* {
+        /*  {
             path: '/dashboardClient',
             name: 'client',
             component: dashboardClient,
             meta: { authorize: [Role.Producteur] }
-        }, */
+        },  */
         {
             path:'/basket',
             name: 'basket',

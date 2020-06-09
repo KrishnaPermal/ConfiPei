@@ -548,6 +548,7 @@ class ComposerStaticInit97ee208f59ba1edf0321e29771ff20ce
         'App\\Fruits' => __DIR__ . '/../..' . '/app/Fruits.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
+        'App\\Http\\Controllers\\CommandesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommandesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\FruitsController' => __DIR__ . '/../..' . '/app/Http/Controllers/FruitsController.php',
         'App\\Http\\Controllers\\PhotosController' => __DIR__ . '/../..' . '/app/Http/Controllers/PhotosController.php',
