@@ -1,10 +1,19 @@
-import { basketService } from "../../_services/basket.service"
+import { basketService } from "../../_services/basket.service";
+import { VStripeCard } from 'v-stripe-elements/lib';
 
 export default {
+    components: {
+        VStripeCard
+        
+      },
+   
     data() {
         return {
             e1: 1,
             valid: true,
+            panel: [0],
+            source: null,
+            apiKey: 'pk_test_51GubhuEJzq6c1uiqcKECJgrxSg2tEilK4uWtvwztd6ZxVXFraX8ZlPg3i2nVebTWq3O3SA1sNHpnpZxxcb9Xwehl00UZiqQsKD',
             order: {
                 orderList: {
                 },
@@ -38,6 +47,7 @@ export default {
 
     created() {
         this.getOrder();
+        
     },
     methods: {
         getOrder() {
@@ -50,7 +60,7 @@ export default {
         },
         process() {
              basketService.sendOrder(this.order)
-                
+             console.log( VStripeCard) 
         }
     }
 }

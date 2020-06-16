@@ -67,7 +67,7 @@
               <v-text-field label="Téléphone*" :rules="rules" v-model="order.adresseLivraison.phone"></v-text-field>
             </v-col>
           </v-row>
-        <v-switch v-model="selectable" label="Changer adresse de facturation"></v-switch>
+        <v-switch v-model="selectable" label="Adresse de livraison est la même que l'adresse de facturation"></v-switch>
         <div v-if="selectable">
           <v-divider></v-divider>
 
@@ -117,8 +117,17 @@
         <v-btn text @click="e1 = 1">Retour</v-btn>
       </v-stepper-content>
 
+
+<!--Récapitulatif-->
       <v-stepper-content step="3">
-        <span>Récapitulatif de la commande :</span>
+          <v-expansion-panels v-model="panel" multiple="">
+            <v-expansion-panel
+              v-for="(item,i) in 1"
+              :key="i"
+            >
+              <v-expansion-panel-header>Récapitulatif</v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  <span>Récapitulatif de la commande :</span>
 
         <v-row dense v-for="(product, i) in order.orderList" :key="i" cols="12">
           <v-col>
@@ -134,13 +143,35 @@
             </v-card>
           </v-col>
         </v-row>
-        <v-row>
-          <v-col md="12">
-            <v-btn color="success" @click="process">Payer</v-btn>
-          </v-col>
-        </v-row>
+        
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            
 
-        <v-btn text @click="e1 =2">Retour</v-btn>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Paiement</v-expansion-panel-header>
+                <v-expansion-panel-content>
+
+                  <v-stripe-card
+                    v-model="source"
+                    :api-key="apiKey"
+                  ></v-stripe-card>
+
+                    <v-row>
+                      <v-col md="12">
+                        <v-btn color="success" @click="process">Payer</v-btn>
+                      </v-col>
+                     </v-row>
+                     
+                    <v-btn text @click="e1 =2">Retour</v-btn>
+
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+
+
+          </v-expansion-panels>
+<!--Récapitulatif-->
+
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
