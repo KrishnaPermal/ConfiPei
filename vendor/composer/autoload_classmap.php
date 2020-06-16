@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Resources\\CommandesResource' => $baseDir . '/app/Http/Resources/CommandesResource.php',
     'App\\Http\\Resources\\FruitsResource' => $baseDir . '/app/Http/Resources/FruitsResource.php',
     'App\\Http\\Resources\\ProducteursResource' => $baseDir . '/app/Http/Resources/ProducteursResource.php',
     'App\\Http\\Resources\\ProduitResource' => $baseDir . '/app/Http/Resources/ProduitResource.php',

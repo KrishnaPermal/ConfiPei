@@ -3,7 +3,7 @@
       <v-row class="text-center justify-center py-2">
             <h1 class="font-weight-regular display-2 ">Mes Commandes</h1>
         </v-row>
-    <v-row dense v-for="(product, i) in basket" :key="i" cols="12">
+    <v-row dense v-for="(product, i) in basket" :key="i" cols="6">
       <v-col>
         <v-card>
           <div class="d-flex justify-space-between">

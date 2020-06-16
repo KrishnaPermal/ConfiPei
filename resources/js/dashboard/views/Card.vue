@@ -40,7 +40,7 @@
           <v-row dense>
             <v-col class="md-4">
               <v-img
-                :src="produit.photo.photo"
+                :src="produit.photo"
                 class="white--text align-end"
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                 height="200px"

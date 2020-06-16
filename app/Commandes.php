@@ -18,4 +18,11 @@ class Commandes extends Model
     {
         return $this->belongsTo(User::class, 'id_users');
     }
+
+    function adresseLivraison(){
+        return $this->belongsTo(Adresses::class, 'id_adresse_livraison');
+    }
+    function adresseFacturation(){
+        return $this->belongsTo(Adresses::class, 'id_adresse_facturation');
+    }
 }

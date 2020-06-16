@@ -83,19 +83,22 @@ function updateBasket(produit){
     storeBasket(basket);
 }
 
-function sendOrder(){
+function sendOrder(order){
     let basket = getBasket();
     let produitQuantity = [];
+
     for( let item in basket){
         let objet = {};
         objet ['id'] = basket[item].id
         objet ['produitQuantity'] = basket[item].quantity
         produitQuantity.push(objet)
-    } 
-    console.log(produitQuantity); 
+    }  
 
     return apiServices.post('/api/commande',{
-        order: produitQuantity,
-    })
+        order: order.orderList,
+        adresseLivraison: order.adresseLivraison,
+        adresseFacturation: order.adresseFacturation
+    }) 
+    
 
 }

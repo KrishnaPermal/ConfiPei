@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UsersSeeder::class,
             ProducteurSeeder::class,
-            CommandeSeeder::class,
+            //CommandeSeeder::class,
             
         ]);
 

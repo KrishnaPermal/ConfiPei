@@ -4,13 +4,33 @@ export default {
     data() {
         return {
             e1: 1,
-            orderList: [],
-            nom: '',
-            prenom: '',
-            ville: '',
-            codePostal: '',
-            pays: '',
-            adresse: '',
+            valid: true,
+            order: {
+                orderList: {
+                },
+                adresseLivraison: {
+                    name: '',
+                    firstname: '',
+                    city: '',
+                    postal_code: '',
+                    country: '',
+                    address: '',
+                    phone: '',
+                },
+                adresseFacturation: {
+                    name: '',
+                    firstname: '',
+                    city: '',
+                    postal_code: '',
+                    country: '',
+                    address: '',
+                    phone: '',
+                },
+            },
+            rules: [
+                value => !!value || 'Required.',
+            ],
+            selectable: false,
             hidden: true,
             checkbox: false,
         }
@@ -21,19 +41,16 @@ export default {
     },
     methods: {
         getOrder() {
-            this.orderList = basketService.getBasket();
+            this.order.orderList = basketService.getBasket();
         },
-        displayInputs() {
-            if (this.checkbox === true) {
-                this.hidden = false;
+        sendOrder() {
+            if (this.checkbox === false) {
+                _.assign(this.order.adresseFacturation, this.order.adresseLivraison)
             }
-            else {
-                this.hidden = true;
-            }
+        },
+        process() {
+             basketService.sendOrder(this.order)
+                
         }
     }
 }
-/* basketService.sendOrder().then(response => {
-                  console.log(response)
-              }) */
-                          //Valider commande, adresse et validation adresse de facturation, paiement

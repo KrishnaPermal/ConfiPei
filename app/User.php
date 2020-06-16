@@ -49,8 +49,13 @@ class User extends Authenticatable
         return $this->hasOne(Producteurs::class, 'id_users');
     }
 
-    public function commande()
+    public function commandes()
     {
         return $this->hasMany(Commandes::class, 'id_users');
+    }
+    
+    public function adresses()
+    {
+        return $this->hasMany(Adresses::class, 'id_adresse');
     }
 }

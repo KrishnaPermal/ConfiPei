@@ -5,53 +5,24 @@
       <h1 class="font-italic font-weight-bold display-1 cyan--text">BIENVENUE SUR NOTRE SITE</h1>
     </v-card-title>
     
+      <h1 class="text-center justify-center py-6">Presentation</h1>
+        <v-container class="text-center justify-center py-6">
+          <p> 
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+            Tempore officia officiis veritatis, tempora velit adipisci architecto consectetur enim modi quaerat doloremque placeat nulla! 
+            Voluptatibus ab itaque adipisci quibusdam nostrum perspiciatis.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Fuga, eos ad! Assumenda incidunt cum rem unde laboriosam fugiat consequuntur enim, a saepe libero omnis? 
+            Omnis asperiores quos inventore corrupti aperiam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Repellat, perspiciatis dicta! Qui earum corrupti saepe doloribus inventore harum neque in nemo laudantium voluptate, reiciendis asperiores, alias illo quisquam cumque mollitia.
+          </p>
+        </v-container>
 
-    <template>
-    <v-carousel>
-        <v-carousel-item
-        v-for="(produit,i) in produitsDisplay"
-        :key="i"
-        :src="produit.photo.photo" :aspect-ratio="1.7"
-        reverse-transition="fade-transition"
-        transition="fade-transition"
-        ></v-carousel-item>
-    </v-carousel>
-    </template>
+   
 
 </div>
 </template>
 
-<script>
- 
-import Axios from 'axios';
 
-export default {
-   
-    data:() => ({
-        produits: [],
-        photo: [],
-        produitsDisplay: [],
-    }),
-    
-
-    methods: {
-        produitDisplay() {
-            Axios.get('/api/produits')
-                .then(({ data }) => {
-                    data.data.forEach(_produit => {
-                        this.produits.push(_produit)
-                    })
-                })
-            this.produitsDisplay = this.produits;
-        }, 
-    },
-
-    
-
-    created() {
-        this.produitDisplay();
-    }
-}
-
-</script>    
 
