@@ -94,7 +94,7 @@ function sendOrder(order){
         produitQuantity.push(objet)
     }  
 
-    return apiServices.post('/api/commande',{
+    return apiServices.post('/api/commandes',{
         order: order.orderList,
         adresseLivraison: order.adresseLivraison,
         adresseFacturation: order.adresseFacturation

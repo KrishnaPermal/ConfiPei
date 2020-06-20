@@ -25,4 +25,8 @@ class Commandes extends Model
     function adresseFacturation(){
         return $this->belongsTo(Adresses::class, 'id_adresse_facturation');
     }
+    function commandeStatus()
+    {
+        return $this->belongsTo(Status::class, 'id_status');
+    }
 }

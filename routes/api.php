@@ -38,7 +38,10 @@ Route::middleware(['auth:api','roles:Producteur'])->prefix('producteurs')->group
 
 /*****************************************************************************/
 Route::middleware(['auth:api', 'roles:Producteur|Client'])->group(function(){
-    Route::post('/commande', 'CommandesController@pushPanier');
+    Route::post('/commandes', 'CommandesController@pushPanier');
+    //Route::get('/commandes', '');
+    //Route::get('/commandes/{id}', '')->where('id','');
+    Route::post('/commandes/{id}/payment','CommandesController@payment')->where('id', '[0-9]+');
 });
 /*****************************************************************************/
 

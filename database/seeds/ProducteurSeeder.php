@@ -15,7 +15,7 @@ class ProducteurSeeder extends Seeder
      */
     public function run()
     {
-        factory(Producteurs::class, 5)->create()
+        factory(Producteurs::class, 8)->create()
             ->each(function($t){
                 $t->produit()->saveMany(
                     factory(Produits::class,1)->make()

@@ -120,58 +120,49 @@
 
 <!--Récapitulatif-->
       <v-stepper-content step="3">
-          <v-expansion-panels v-model="panel" multiple="">
-            <v-expansion-panel
-              v-for="(item,i) in 1"
-              :key="i"
-            >
-              <v-expansion-panel-header>Récapitulatif</v-expansion-panel-header>
+         <v-row justify="center">
+           <v-expansion-panels v-model="panel" multiple hover>
+             <v-expansion-panel>
+               <v-expansion-panel-header>
+                 <span>Récapitulatif de la commande :</span>
+                </v-expansion-panel-header>
                 <v-expansion-panel-content>
-                  <span>Récapitulatif de la commande :</span>
-
-        <v-row dense v-for="(product, i) in order.orderList" :key="i" cols="12">
-          <v-col>
-            <v-card>
-              <div class="d-flex justify-space-between">
-                <div>
-                  <v-card-title class="headline" v-text="product.name"></v-card-title>
-                  <v-card-subtitle v-text="'Prix:'+product.price"></v-card-subtitle>
-                  <v-card-subtitle v-text="'Nombre de produit:'+product.quantity"></v-card-subtitle>
-                  <v-card-subtitle v-text="'Total:'+product.price * product.quantity"></v-card-subtitle>
-                </div>
-              </div>
-            </v-card>
-          </v-col>
-        </v-row>
+                  <v-row dense cols="12">
+                    <v-col v-for="(product, i) in order.orderList" :key="i">
+                      <v-card max-width="400">
+                        <div class="d-flex justify-space-between">
+                          <div>
+                            <v-card-title class="headline" v-text="product.name"></v-card-title>
+                            <v-card-subtitle v-text="'Prix:'+product.price"></v-card-subtitle>
+                            <v-card-subtitle v-text="'Nombre de produit:'+product.quantity"></v-card-subtitle>
+                            <v-card-subtitle v-text="'Total:'+product.price * product.quantity"></v-card-subtitle>
+                          </div>
+                        </div>
+                      </v-card>
+                    </v-col>
+                  </v-row>
         
               </v-expansion-panel-content>
             </v-expansion-panel>
-            
-
             <v-expansion-panel>
-              <v-expansion-panel-header>Paiement</v-expansion-panel-header>
-                <v-expansion-panel-content>
-
-                  <v-stripe-card
-                    v-model="source"
-                    :api-key="apiKey"
-                  ></v-stripe-card>
-
-                    <v-row>
-                      <v-col md="12">
-                        <v-btn color="success" @click="process">Payer</v-btn>
-                      </v-col>
-                     </v-row>
-                     
-                    <v-btn text @click="e1 =2">Retour</v-btn>
-
+              <v-expansion-panel-header>
+                <span>Paiement :</span>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                  <v-stripe-card v-model="source" :api-key="apiKey"></v-stripe-card>
               </v-expansion-panel-content>
             </v-expansion-panel>
-
-
           </v-expansion-panels>
-<!--Récapitulatif-->
+        </v-row>
+        <v-row>
+          <v-col md="12">
+            <v-btn color="success" @click="process" :disabled="!source">Payer</v-btn>
+          </v-col>
+        </v-row>
+                     
+        <v-btn text @click="e1 =2">Retour</v-btn>
 
+<!--Récapitulatif-->
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>

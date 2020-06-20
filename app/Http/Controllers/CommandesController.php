@@ -6,7 +6,9 @@ use App\Adresses;
 use App\Commandes;
 use App\Http\Resources\CommandesResource;
 use App\Produits;
+use App\Status;
 use App\User;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,11 +34,11 @@ class CommandesController extends Controller
                $user = $this->addUserToOrder($user, $createCommande);
                $this->addAdresseLivraison($commandes['adresseLivraison'], $createCommande, $user);
                $this->addAdresseFacturation($commandes['adresseFacturation'], $createCommande, $user);
-               $createCommande->save();
-               $this->addProductsToOrder($commandes['order'], $createCommande);   
-             
-    
+               $status = Status::with(['commandes'])->find(1);
                
+               $createCommande->commandeStatus()->associate($status);
+               $createCommande->save();
+               $this->addProductsToOrder($commandes['order'], $createCommande);                  
             }
 
         } catch(Exception $e){
@@ -95,11 +97,38 @@ class CommandesController extends Controller
                throw new Exception('Produits incorrects');
             }
             $commande->produit()->attach($produit, ['quantity'=>$quantity]); 
+        }   
+    }
+    function payment(Request $request, $id)
+    {
+        $paiement = Validator::make(
+            $request->input(),
+            [
+                'id' => 'required',
+            ]
+        )->validate();
+        $order = Commandes::find($id);
+        $status = Status::with(['commandes'])->find(2);
 
-            
-
+        $order->commandeStatus()->associate($status);
+        $order->save();
+        try {
+            $charge = Stripe::charges()->create([
+                'amount' => 20,
+                'currency' => 'EUR',
+                'source' => $paiement['id'],
+                'description' => 'Description',
+                'receipt_email' => 'krishna.permal974@gmail.com',
+                'metadata' => [
+                    'data1' => 'metadata 1',
+                    'data2' => 'metadata 2',
+                    'data3' => 'metadata 3'
+                ],
+            ]);
+            return $charge;
+        } catch (Exception $e) {
+            return $e;
         }
-        
     }
 
 }
