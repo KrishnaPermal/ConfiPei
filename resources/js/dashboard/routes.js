@@ -4,7 +4,7 @@ import Home from "./views/Home.vue";
 import Dashboard from './views/Dashboard.vue';
 import Card from "./views/Card.vue";
 import dashboardProducteur from './views/dashboardProducteur.vue';
-//import dashboardClient from './views/dashboardClient.vue';
+import managementProducteurs from './views/managementProducteurs.vue';
 import Basket from './views/BasketOrder.vue';
 import Stepper from './views/components/Stepper.vue';
 import Login from "./login/Login.vue";
@@ -42,16 +42,16 @@ const router = new VueRouter({
 
         {
             path: '/dashboardProducteur',
-            name: 'producteur',
+            name: 'dashproducteur',
             component: dashboardProducteur,
             meta: { authorize: [Role.Producteur] }
         },
-        /*  {
-            path: '/dashboardClient',
-            name: 'client',
-            component: dashboardClient,
-            meta: { authorize: [Role.Producteur] }
-        },  */
+        {
+            path: '/managementProducteurs',
+            name: 'managementProducteurs',
+            component: managementProducteurs,
+            //meta: { authorize: [Role.Admin] }
+        },  
         {
             path:'/basket',
             name: 'basket',

@@ -29,6 +29,7 @@
             </v-card>
           </v-col>
         </v-row>
+
         <v-btn color="primary" @click="e1 = 2">Valider</v-btn>
 
         <v-btn to="/basket" text>Annuler</v-btn>

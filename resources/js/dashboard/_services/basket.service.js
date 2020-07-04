@@ -10,32 +10,45 @@ export const basketService = {
 }
 
 
-function addPanier(produit, quantity) {
+function addPanier(produit, quantity) { 
 
     let basket = getBasket()
+    let qt = 0
 
     if (!_.hasIn(basket, buildKey(produit))) {
         basket[buildKey(produit)] = {
             id: produit.id,
             name: produit.name,
-            quantity: parseInt(quantity),
             price: produit.price
         }
-    } else {
-            
-    basket[buildKey(produit)].quantity += parseInt(quantity)
-}  
+        
+        qt = parseInt(quantity);
+    } 
+    //si  oui, on incrémente la quantité actuelle 
+    else {
+        
+        qt = basket[buildKey(produit)].quantity + parseInt(quantity)
+    }  
+    if (qt > produit.quantity) {
+        qt = produit.quantity
+        console.log("stock insuffisant")  
+    } 
+    else if (qt > 10) { 
+             qt = 10
+        console.log("pas plus de 10 produits") 
+    } 
+    snackbar['msg'] = qt + ' Articles ajouté au panier'
 
-// on appelle ensuite la fonction store pour l'ajouté au local storage
-storeBasket(basket)
-console.log(basket)
+    basket[buildKey(produit)].quantity = qt
+    EventBus.$emit('snackError', snackbar);
+    // on appelle ensuite la fonction store pour l'ajouté au local storage
+    storeBasket(basket)    
 
 }
 
 function buildKey(produit){
     return 'produit_' + produit.id
 }
-
 
 
 function getBasket(){  //update

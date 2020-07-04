@@ -36,6 +36,12 @@ Route::middleware(['auth:api','roles:Producteur'])->prefix('producteurs')->group
     Route::post('produits', 'ProduitController@createOrUpdate'); 
 }); 
 
+// Récupère les tous Producteurs (accessible à l'administrateur)
+Route::middleware(['auth:api','roles:Admin|Producteur'])->group(function () {
+    Route::get('producteurs', 'ProducteursController@getProducteurs');
+    Route::post('producteurs', 'ProducteursController@addOrUpdate');
+}); 
+
 /*****************************************************************************/
 Route::middleware(['auth:api', 'roles:Producteur|Client'])->group(function(){
     Route::post('/commandes', 'CommandesController@pushPanier');
@@ -44,6 +50,7 @@ Route::middleware(['auth:api', 'roles:Producteur|Client'])->group(function(){
     Route::post('/commandes/{id}/payment','CommandesController@payment')->where('id', '[0-9]+');
 });
 /*****************************************************************************/
+
 
 
 

@@ -1,6 +1,6 @@
 import { basketService } from "../../_services/basket.service";
 import { apiServices } from "../../_services/api.services";
-import { clientService } from "../../_services/clientService";
+//import { clientService } from "../../_services/clientService";
 //import { VStripeCard } from 'v-stripe-elements/lib';
 
 export default {
@@ -45,8 +45,9 @@ export default {
             ],
             selectable: false,
             hidden: true,
-            checkbox: false,
+            //checkbox: false,
             orderId: '',
+            status: '',
         }
     },
 
@@ -68,7 +69,7 @@ export default {
         },
         process() {
 
-            clientService.post('/api/commandes/' + this.orderId + '/payment', {
+            apiServices.post('/api/commandes/' + this.orderId + '/payment', {
                 id: this.source.id
             }).then(response => {
                 console.log(response);

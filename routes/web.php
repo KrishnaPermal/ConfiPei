@@ -20,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 /* Route::get('/', 'AccueilController@index'); */
 
+Route::get('/test-mail',function(){
+    return new App\Mail\Contact([
+        'name' => 'toto',
+        'email' => 'toto@toto.com',
+        'message' => 'Voici le mail reçu!',
+    ]);
+});
 
 Route::prefix('/')->group(function(){
     Route::get('/', 'AdminController@index');

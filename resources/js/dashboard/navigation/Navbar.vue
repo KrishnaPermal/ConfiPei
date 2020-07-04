@@ -78,7 +78,7 @@
 
           <v-list-item-content>
             <v-list-item-title class="font-weight-bold">
-              <router-link :to="{name:'producteur'}">Producteurs</router-link>
+              <router-link :to="{name:'dashproducteur'}">DashProducteurs</router-link>
             </v-list-item-title>
           </v-list-item-content>
          </v-list-item>
@@ -92,7 +92,22 @@
 
           <v-list-item-content>
             <v-list-item-title class="font-weight-bold">
-              <router-link :to="{name:'client'}">Client</router-link>
+              <router-link :to="{name:'client'}">Clients</router-link>
+            </v-list-item-title>
+          </v-list-item-content>
+         </v-list-item>
+
+<v-divider></v-divider>
+
+
+         <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-shopping</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title class="font-weight-bold">
+              <router-link :to="{name:'producteurs'}">Producteurs</router-link>
             </v-list-item-title>
           </v-list-item-content>
          </v-list-item>
@@ -154,8 +169,9 @@ export default {
         { title: "Accueil", icon: "mdi-home" },
         { title: "Dashboard", icon: "mdi-view-dashboard" },
         { title: "Confitures", icon: "mdi-shopping" },
-        { title: "Producteurs", icon: "mdi-account" },
+        { title: "DashProducteurs", icon: "mdi-account" },
         { title: "Client", icon: "mdi-account" },
+        { title: "Producteurs", icon: "mdi-account" },
         { title: "Login", icon: "mdi-login-variant" },
       ], 
     };

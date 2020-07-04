@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Adresses;
 use App\Commandes;
 use App\Http\Resources\CommandesResource;
+use App\Mail\Contact;
 use App\Produits;
 use App\Status;
 use App\User;
@@ -12,6 +13,7 @@ use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class CommandesController extends Controller
@@ -47,6 +49,10 @@ class CommandesController extends Controller
         }
 
         DB::commit();
+        Mail::to($user->email)->send(new Contact([
+            'name' => $user->name,
+            'order' => $createCommande,
+        ]));
         return new CommandesResource($createCommande);
 
     }

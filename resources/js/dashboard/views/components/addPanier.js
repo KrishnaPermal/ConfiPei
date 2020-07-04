@@ -12,10 +12,13 @@ export default{
 
         produit:{
             required:true,
-        }
+        },
+    },
+    created(){
+
     },
     methods:{
-        save(){
+        add(){
 
             basketService.addPanier(this.produit ,this.quantity);
                 this.quantity=0;
