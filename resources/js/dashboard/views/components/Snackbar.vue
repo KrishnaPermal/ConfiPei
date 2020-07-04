@@ -1,9 +1,10 @@
-<template>
+<!--<template>
   <v-snackbar  v-model="snackbar" :timeout="timeout" :color="color">
     {{ text }}
     <v-btn text @click="snackbar = false">Close</v-btn>
   </v-snackbar>
 </template>
+
 
 <script>
 import { EventBus } from "../../_helpers/event.bus";
@@ -24,4 +25,4 @@ export default {
     });
   }
 };
-</script>
+</script>-->

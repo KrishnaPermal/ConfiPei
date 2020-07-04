@@ -13,7 +13,7 @@
             :hint="produit.quantity<5 ? 'Quantité restante: '+produit.quantity : ''"
             :persistent-hint="produit.quantity<5"
             :disabled="produit.quantity.quantity==0"
-            :error-messages="produit.quantity==0 ? 'Stock épuisé' : ''"
+            :error-messages="produit.quantity==0 ? 'Stock épuisé' : ''" 
             ></v-text-field>
             <v-btn :disabled="quantity==0" @click="add">
                 <v-icon>mdi-plus</v-icon> Ajouter

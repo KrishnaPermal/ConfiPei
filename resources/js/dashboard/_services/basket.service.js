@@ -37,10 +37,10 @@ function addPanier(produit, quantity) {
              qt = 10
         console.log("pas plus de 10 produits") 
     } 
-    snackbar['msg'] = qt + ' Articles ajouté au panier'
+    //snackbar['msg'] = qt + ' Articles ajouté au panier'
 
     basket[buildKey(produit)].quantity = qt
-    EventBus.$emit('snackError', snackbar);
+    EventBus.$emit('snackError', /*snackbar*/);
     // on appelle ensuite la fonction store pour l'ajouté au local storage
     storeBasket(basket)    
 

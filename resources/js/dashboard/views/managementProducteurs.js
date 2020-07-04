@@ -1,4 +1,4 @@
-import Axios from "axios"
+/* import Axios from "axios"
 import {apiServices} from '../_services/api.services';
 import drawerProducteur from './components/drawerProducteur.vue';
 
@@ -39,5 +39,5 @@ export default {
         },
     }
 }
-
+ */
 

@@ -10,6 +10,7 @@
         <router-view></router-view>
       </v-container>
     </v-content>
+    <!-- <Snackbar /> -->
     <Footer/>
   </v-app>
 </template>
@@ -17,10 +18,12 @@
 <script>
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
+//import Snackbar from "../views/components/Snackbar.vue";
 /* import Dashboard from "../navigation/Dashboard"; */
 export default {
   components: {
     Navbar,
+     //Snackbar,
     //Dashboard,
     Footer: Footer
   }

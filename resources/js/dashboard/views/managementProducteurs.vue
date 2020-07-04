@@ -1,4 +1,4 @@
-<template>
+<!--<template>
 
   <v-data-table :headers="headers" :items="producers" class="elevation-1" :items-per-page="5">
     <template v-slot:top>
@@ -14,7 +14,7 @@
       <drawerProducteur @update="producteurs.push($event)" />
     </template>
     <!--<template v-slot:item.nom="{ item }">{{item.name}},</template>
-    <template v-slot:item.email="{ item }">{{item.id_users.email}}</template>-->
+    <template v-slot:item.email="{ item }">{{item.id_users.email}}</template>
     <template v-slot:item.actions="{ item }">
       <drawerProducteur :producteur="item" @update="Object.assign(item,$event)"  :isModification="true" />
     </template>

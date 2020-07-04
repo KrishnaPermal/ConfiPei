@@ -29,7 +29,7 @@ export default {
             search: null,
             price: '',
             quantity: '',
-            snackbar: false,
+            //snackbar: false,
             text: '',
             photo: '',
             loading: false,
@@ -74,7 +74,7 @@ export default {
                     this.$emit('addProduit', response.data)
                     this.dialog = false;
                     this.dialog = false
-                    this.snackbar = true
+                    //this.snackbar = true
                     this.text = 'le produit à bien été ajoutée'
             
                 })
